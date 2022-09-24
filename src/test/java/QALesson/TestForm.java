@@ -1,5 +1,6 @@
 package QALesson;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.WebDriverRunner;
@@ -11,6 +12,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import java.io.File;
 
 import static com.codeborne.selenide.Condition.exist;
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
 
 public class TestForm {
@@ -41,26 +43,16 @@ public class TestForm {
         $("#submit").submit();
         $x("//*[. = 'Thanks for submitting the form']").should(exist);
 
-        Assertions.assertEquals($x("//td[.='Student Name']/following-sibling::td").getText(),"Тапок Котофей");
-        Assertions.assertEquals($x("//td[.='Student Email']/following-sibling::td").getText(),"TapokKoTof@yandex.ru");
-        Assertions.assertEquals($x("//td[.='Gender']/following-sibling::td").getText(),"Male");
-        Assertions.assertEquals($x("//td[.='Mobile']/following-sibling::td").getText(),"8342546385");
-        Assertions.assertEquals($x("//td[.='Date of Birth']/following-sibling::td").getText(),"24 September,2022");
-        Assertions.assertEquals($x("//td[.='Subjects']/following-sibling::td").getText(),"English");
-        Assertions.assertEquals($x("//td[.='Hobbies']/following-sibling::td").getText(),"Music");
-        Assertions.assertEquals($x("//td[.='Picture']/following-sibling::td").getText(),"cat.jpg");
-        Assertions.assertEquals($x("//td[.='Address']/following-sibling::td").getText(),"Москва, колбасный завод");
-        Assertions.assertEquals($x("//td[.='State and City']/following-sibling::td").getText(),"NCR Delhi");
 
-
-
-
-
-
-
-
-
-
-
+        $(".table-responsive").shouldHave(text("Тапок Котофей"),
+                text("TapokKoTof@yandex.ru"),
+                text("Male"),
+                text("8342546385"),
+                text("24 September,2022"),
+                text("English"),
+                text("Music"),
+                text("cat.jpg"),
+                text("Москва, колбасный завод"),
+                text("NCR Delhi"));
     }
 }
