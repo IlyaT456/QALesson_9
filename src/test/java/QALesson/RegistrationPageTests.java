@@ -46,9 +46,8 @@ public class RegistrationPageTests {
                 .setСity("Delhi")
                 .submit();
 
-        $x("//*[. = 'Thanks for submitting the form']").should(exist);
-
-                componentResultForm.checkResult("Student Name", "Котофей Тапок")
+                componentResultForm.checkTable()
+                        .checkResult("Student Name", "Котофей Тапок")
                         .checkResult("Student Email", "TapokKoTof@yandex.ru")
                         .checkResult("Gender", "Male")
                         .checkResult("Mobile", "8342546385")
