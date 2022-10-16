@@ -30,9 +30,9 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage setBirthDate(String day, String month, String year) {
+    public RegistrationPage setBirthDate(String birthDate) {
         $("#dateOfBirthInput").click();
-        componentСalendar.setDate(day, month, year);
+        componentСalendar.setDate(birthDate);
         return this;
     }
 
