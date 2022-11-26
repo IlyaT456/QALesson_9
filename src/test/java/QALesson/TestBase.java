@@ -1,9 +1,11 @@
 package QALesson;
 
+import QALesson.helpers.Attach;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import com.github.javafaker.Faker;
 import io.qameta.allure.selenide.AllureSelenide;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 
 import java.text.SimpleDateFormat;
@@ -18,7 +20,7 @@ public class TestBase {
             lastname = faker.name().lastName(),
             email = faker.internet().emailAddress(),
             day = String.valueOf(faker.number().numberBetween(1, 31)),
-            month = Calendar.getInstance().get(Calendar.MONTH) +"",
+            month = Calendar.getInstance().get(Calendar.MONTH) + "",
             year = String.valueOf(faker.number().numberBetween(1995, 2020)),
             birthDate = (day + " " + month + " " + year),
             phone = faker.phoneNumber().subscriberNumber(10),
@@ -33,5 +35,16 @@ public class TestBase {
         SelenideLogger.addListener("allure", new AllureSelenide());
         Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
     }
+
+    @AfterEach
+    public static void afterEach() {
+        Attach.screenshotAs("Скрин");
+        Attach.attachAsText("Прикрипленый текст", "Текст");
+        Attach.addVideo();
+        Attach.browserConsoleLogs();
+        Attach.pageSource();
+        Attach.getVideoUrl();
+        Attach.getSessionId();
+        }
 }
 
