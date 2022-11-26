@@ -1,7 +1,9 @@
 package QALesson;
 
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.logevents.SelenideLogger;
 import com.github.javafaker.Faker;
+import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.BeforeAll;
 
 import java.text.SimpleDateFormat;
@@ -28,6 +30,7 @@ public class TestBase {
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.browserSize = "1440x900";
         Configuration.holdBrowserOpen = true;
+        SelenideLogger.addListener("allure", new AllureSelenide());
     }
 }
 

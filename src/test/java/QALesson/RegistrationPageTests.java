@@ -3,6 +3,8 @@ package QALesson;
 import QALesson.component.ComponentCalendar;
 import QALesson.component.ComponentResultForm;
 import QALesson.pages.RegistrationPage;
+import com.codeborne.selenide.logevents.SelenideLogger;
+import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Array;
@@ -20,7 +22,6 @@ public class RegistrationPageTests extends TestBase {
 
     @Test
     public void testForm() {
-
         registrationPage.openPage()
                 .setFirstName(firstname)
                 .setLastName(lastname)
