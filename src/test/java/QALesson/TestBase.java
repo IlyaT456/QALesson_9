@@ -37,7 +37,7 @@ public class TestBase {
     }
 
     @AfterEach
-    public static void afterEach() {
+    public  void afterEach() {
         Attach.screenshotAs("Скрин");
         Attach.attachAsText("Прикрипленый текст", "Текст");
         Attach.addVideo();
